@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Service Health UI</title>
+    <link rel="stylesheet" href="/health-ui/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Service Health</h1>
+      <div id="status" class="status unknown">Loading…</div>
+      <section>
+        <h2>Checks</h2>
+        <ul id="checks" class="checks"></ul>
+      </section>
+      <section>
+        <h2>Raw</h2>
+        <pre id="raw" class="raw"></pre>
+      </section>
+    </div>
+    <script src="/health-ui/app.js"></script>
+  </body>
+</html>
