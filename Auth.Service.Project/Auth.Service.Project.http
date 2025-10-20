@@ -1,0 +1,75 @@
+@Auth.Service.Project_HostAddress = http://localhost:5032
+@AuthToken = 
+
+### Register a new user
+POST {{Auth.Service.Project_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "Password123!",
+  "firstName": "Test",
+  "lastName": "User"
+}
+
+### Login with credentials
+POST {{Auth.Service.Project_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "Password123!"
+}
+
+### Get user profile (requires authentication)
+GET {{Auth.Service.Project_HostAddress}}/api/auth/profile
+Authorization: Bearer {{AuthToken}}
+Accept: application/json
+
+### Change password (requires authentication)
+POST {{Auth.Service.Project_HostAddress}}/api/auth/change-password
+Authorization: Bearer {{AuthToken}}
+Content-Type: application/json
+
+{
+  "currentPassword": "Password123!",
+  "newPassword": "NewPassword123!"
+}
+
+### Request password reset
+POST {{Auth.Service.Project_HostAddress}}/api/auth/forgot-password
+Content-Type: application/json
+
+{
+  "email": "test@example.com"
+}
+
+### Reset password using token
+POST {{Auth.Service.Project_HostAddress}}/api/auth/reset-password
+Content-Type: application/json
+
+{
+  "token": "reset-token-here",
+  "newPassword": "ResetPassword123!"
+}
+
+### Verify email address
+POST {{Auth.Service.Project_HostAddress}}/api/auth/verify-email?token=verification-token-here
+
+### Refresh JWT token
+POST {{Auth.Service.Project_HostAddress}}/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "refresh-token-here"
+}
+
+### Logout (requires authentication)
+POST {{Auth.Service.Project_HostAddress}}/api/auth/logout
+Authorization: Bearer {{AuthToken}}
+
+### Check OpenAPI documentation
+GET {{Auth.Service.Project_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
